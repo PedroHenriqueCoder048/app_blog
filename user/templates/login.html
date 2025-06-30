@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+    login
+{% endblock title %}
+
+{% block content %}
+    <h1>Login</h1>
+    <form action="." method="post">
+        {% csrf_token %}
+        {{ form_login }}
+        <input type="submit" value="Entra">
+    </form>
+    <a href="{% url 'forgotPws' %}">esqueci minha senha</a>
+{% endblock content %}
