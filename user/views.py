@@ -11,19 +11,23 @@ def login(request):
 
 def recover_password(request):
     if request.method == "GET":
-        return render(request, 'forgot_password.html')
+        context = {
+            'user_exist': None 
+        }
+        return render(request, 'forgot_password.html', context)
 
     email_user_input = request.POST.get('email_user_input')
     user_exist = User.objects.filter(email=email_user_input).first()
 
     if user_exist:
         context = {
-            'user_exist' : user_exist,
-            'mensege' : 'verifique sua caixa de email'
+            'user_exist': user_exist,
+            'mensege': 'verifique sua caixa de email'
         }
-        return render(request, 'forgot_password.html',context)
     else:
         context = {
-            'mensege':'email não existe'
+            'user_exist': False,  
+            'mensege': 'email não existe'
         }
-        return render(request, 'forgot_password.html',context)
+
+    return render(request, 'forgot_password.html', context)
