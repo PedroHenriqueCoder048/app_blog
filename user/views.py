@@ -1,13 +1,33 @@
 from django.shortcuts import render
-from user.forms import UserFormLogin
 from user.models import User
 
 def login(request):
-    form_login = UserFormLogin()
-    context = {
-        'form_login': form_login
-    }
-    return render(request, 'login.html', context)
+    if request.method == "GET":
+        return render(request, 'login.html')
+
+    user_input =request.POST.get("user-login")
+    # user_psw = request.POST.get("user-psw-login")
+
+    if not user_input:
+        return render(request, 'login.html')
+    
+    if user_input:
+        user = User.get_user(user_input)
+
+        if user:
+            context = {
+                'encontrado':True
+            }
+            return render(request, 'home.html',context)
+        else:
+            context = {
+                'encontrado':False
+            }
+            return render(request, 'login.html',context)
+
+def home(request):
+    return render(request, 'home.html')
+
 
 def recover_password(request):
     if request.method == "GET":

@@ -1,7 +1,8 @@
 from django.urls import path
-from user.views import login,recover_password
+from user.views import login,recover_password,home
 
 urlpatterns = [
     path('login/',login,name='login'),
-    path('forgotPws/',recover_password,name='forgotPws')
+    path('home/',home,name='home'),
+    path('forgotPws/',recover_password,name='forgotPws'),
 ]

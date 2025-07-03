@@ -1,6 +1,7 @@
 import os
 from django.db import models
 from django.core.validators import RegexValidator
+from django.db.models import Q
 from .emails.base import Email
 
 
@@ -50,6 +51,13 @@ class User(models.Model):
         blank=False,
         null=False
     )
+
+    @classmethod
+    def get_user(cls,user_login):
+        cls.objects.filter(
+                Q(email = user_login)|Q(user_name=user_login)
+                ).first()
+        
 
     def account_confirmatiom(self):
         subject = "TESTE DE CONFIRMAÇÃO DE CONTA"

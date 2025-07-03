@@ -5,13 +5,33 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>Login</h1>
-    <div class="input-group input-group-sm mb-3"></div>
-    <form action="." method="post">
+<header>
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Ponto Comum</span>
+      <form class="d-flex">
+            <a class="nav-link" href="#" tabindex="-1">Criar conta</a>
+            <a class="nav-link" href="#" tabindex="-1">sobre</a>
+      </form>
+    </div>
+  </div>
+</nav>
+</header>
+<main>
+<div class="input-group input-group-sm mb-3"></div>
+    <form action="{% url 'home'%}" method="post">
         {% csrf_token %}
-        {{ form_login }}
-        <input type="submit" value="Entra">
-    </form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Usuário</label>
+                <input name="user-login" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="exemple@gmail.com ou exemple123">
+                <div id="emailHelp" class="form-text">Seu email não será compartilhado.</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Senha</label>
+                <input name="user-psw-login" type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <button type="submit" class="btn btn-primary">Entra</button>
+            </form>
     <a href="{% url 'forgotPws' %}">esqueci minha senha</a>
-</div>
+</main>
     {% endblock content %}
