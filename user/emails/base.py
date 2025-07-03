@@ -1,26 +1,28 @@
 import os 
 import sys
-import django
+from dotenv import load_dotenv
+from django.core.mail import send_mail
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(BASE_DIR)
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings") 
-django.setup()
 
+load_dotenv()
+class Email():
+    def __init__(self,subject:str,message:str, from_email:str,to_emails:list):
 
-from django.core.mail import send_mail
+        self.subject = subject
+        self.message = message
+        self.from_email = from_email
+        self.to_emails = to_emails
 
-def send_email(email):
-    subject = 'TESTE DE EMAIL COM PYTHON'
-    message = 'ESSE É UM TESTE DE EMAIL ENVIADO COM PYTHON'
-    from_email =email 
-    to_email = ['pedrohenriquecosta.profissional@gmail.com']
+    def send_email(self):
 
-    send_mail(
-        subject,
-        message,
-        from_email,
-        to_email,
-        fail_silently=False
-    )
+        send_mail(
+                self.subject,
+                self.message,
+                self.from_email,
+                self.to_emails,
+                fail_silently=False
+            )

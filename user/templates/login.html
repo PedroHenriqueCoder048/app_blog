@@ -6,10 +6,12 @@
 
 {% block content %}
     <h1>Login</h1>
+    <div class="input-group input-group-sm mb-3"></div>
     <form action="." method="post">
         {% csrf_token %}
         {{ form_login }}
         <input type="submit" value="Entra">
     </form>
     <a href="{% url 'forgotPws' %}">esqueci minha senha</a>
-{% endblock content %}
+</div>
+    {% endblock content %}

@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from user.forms import UserFormLogin
 from user.models import User
-from user.emails.base import send_email
 
 def login(request):
     form_login = UserFormLogin()
@@ -21,11 +20,11 @@ def recover_password(request):
     user_exist = User.objects.filter(email=email_user_input).first()
 
     if user_exist:
+        user_exist.recover_password()
         context = {
             'user_exist': user_exist,
             'mensege': 'verifique sua caixa de email'
         }
-        send_email(f'{user_exist.email}')
     else:
         context = {
             'user_exist': False,  
