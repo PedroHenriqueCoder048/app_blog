@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from user.models import User
+from blog.models import Blog
 
 def login(request):
     if request.method == "GET":
@@ -26,7 +27,13 @@ def login(request):
             return render(request, 'login.html',context)
 
 def home(request):
-    return render(request, 'home.html')
+
+    blogs = Blog.objects.all()
+
+    context = {
+        'blogs':blogs
+    }
+    return render(request, 'home.html',context)
 
 
 def recover_password(request):
