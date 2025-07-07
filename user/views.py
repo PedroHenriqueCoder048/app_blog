@@ -3,28 +3,25 @@ from user.models import User
 from blog.models import Blog
 
 def login(request):
-    if request.method == "GET":
-        return render(request, 'login.html')
+    if request.method == "POST":
+        user_login =request.POST.get("user-login")
+        user_psw = request.POST.get("user-psw")
 
-    user_input =request.POST.get("user-login")
-    # user_psw = request.POST.get("user-psw-login")
-
-    if not user_input:
-        return render(request, 'login.html')
-    
-    if user_input:
-        user = User.get_user(user_input)
+        if not user_login or not user_psw:
+            return render(request, 'login.html')
+        
+        user = User.get_user(user_login,user_psw)
+        print('usuario',user)
+        context = {'user_exist':False}
 
         if user:
-            context = {
-                'encontrado':True
-            }
+            context['user_exist']=True
             return render(request, 'home.html',context)
         else:
-            context = {
-                'encontrado':False
-            }
             return render(request, 'login.html',context)
+
+    return render(request, 'login.html')
+
 
 def home(request):
 
