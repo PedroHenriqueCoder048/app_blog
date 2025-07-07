@@ -6,34 +6,37 @@ def login(request):
     if request.method == "GET":
         return render(request, 'login.html')
 
-    user_input =request.POST.get("user-login")
-    # user_psw = request.POST.get("user-psw-login")
+    user_login =request.POST.get("user-login")
+    user_psw = request.POST.get("user-login-psw")
 
-    if not user_input:
+    if not user_login or not user_psw:
         return render(request, 'login.html')
     
-    if user_input:
-        user = User.get_user(user_input)
+    if user_login:
+        user = User.get_user(user_login)
+        print("user",user)
 
         if user:
             context = {
-                'encontrado':True
+                'user_exist':True
             }
             return render(request, 'home.html',context)
         else:
             context = {
-                'encontrado':False
+                'user_exist':False
             }
             return render(request, 'login.html',context)
 
 def home(request):
 
-    blogs = Blog.objects.all()
+    # if request.method == "GET":
 
-    context = {
-        'blogs':blogs
-    }
-    return render(request, 'home.html',context)
+        blogs = Blog.objects.all()
+        print('lista d blogs',blogs)
+        context = {
+            'blogs':blogs
+        }
+        return render(request, 'home.html',context)
 
 
 def recover_password(request):

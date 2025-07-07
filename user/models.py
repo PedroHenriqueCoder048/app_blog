@@ -54,7 +54,7 @@ class User(models.Model):
 
     @classmethod
     def get_user(cls,user_login):
-        cls.objects.filter(
+        return cls.objects.filter(
                 Q(email = user_login)|Q(user_name=user_login)
                 ).first()
         
