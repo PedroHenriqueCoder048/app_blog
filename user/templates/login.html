@@ -16,6 +16,11 @@
     </div>
   </div>
 </nav>
+{%if not user_exist%}
+    <div class="alert alert-danger" role="alert">
+        Login não realizado. Verifique Seu usuário ou senha
+    </div>
+{% endif %}
 </header>
 <main class="vh-100 d-flex flex-column justify-content-center  overflow-hidden">
 <div class="d-flex flex-row justify-content-center input-group input-group-sm mb-3">
@@ -28,7 +33,6 @@
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Senha</label>
                 <input name="user-psw" type="password" class="form-control" id="" required aria-describedby="passwordHelp">
-
             </div>
             <button type="submit" class="btn btn-primary">Entra</button>
     </form>

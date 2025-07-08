@@ -1,6 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from user.models import User
-from blog.models import Blog
 
 def login(request):
     if request.method == "POST":
@@ -15,23 +14,11 @@ def login(request):
         context = {'user_exist':False}
 
         if user:
-            context['user_exist']=True
-            return render(request, 'home.html',context)
+            return redirect('home')
         else:
             return render(request, 'login.html',context)
 
     return render(request, 'login.html')
-
-
-def home(request):
-
-    blogs = Blog.objects.all()
-
-    context = {
-        'blogs':blogs
-    }
-    return render(request, 'home.html',context)
-
 
 def recover_password(request):
     if request.method == "GET":

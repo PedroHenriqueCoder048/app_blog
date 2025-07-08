@@ -1,10 +1,47 @@
-{% extends "base.html"%}
-
-{%block title%}
-    home
-{%endblock title%}
+{% extends 'base.html'%}
 
 {% block content%}
-    <h1>home</h1>
-    
+<header>
+<nav class="navbar navbar-expand-lg  navbar-dark bg-primary">
+  <a class="navbar-brand m-3" href="#">Papo Comum</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse d-flex flex-row justify-content-around" id="conteudoNavbarSuportado">
+    <div class="">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Nova Publicação</a>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Minha área
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Minhas publicações</a></li>
+            <li><a class="dropdown-item" href="#">Meus dados</a></li>
+            <li><a class="dropdown-item" href="#" style="color: red;">sair</a></li>
+        </ul>
+        </li>
+    </ul>
+    </div>
+    <div class="">
+    <form class="form-inline my-2 my-lg-0 d-flex flex-row">
+      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar blog" aria-label="Pesquisar">
+      <button type="button" class="btn btn-primary">Pesquisar</button>
+    </form>
+    </div>
+  </div>
+</nav>
+</header>
+<main class="overflow-auto vh-100">
+  {% for blog in blogs %}
+    <div>{{ blog }}</div>
+  {% endfor %}
+</main>
 {% endblock content%}
