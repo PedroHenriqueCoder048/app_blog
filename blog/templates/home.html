@@ -2,46 +2,43 @@
 
 {% block content%}
 <header>
-<nav class="navbar navbar-expand-lg  navbar-dark bg-primary">
-  <a class="navbar-brand m-3" href="#">Papo Comum</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse d-flex flex-row justify-content-around" id="conteudoNavbarSuportado">
-    <div class="">
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" onclick="">Navbar scroll</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Nova Publicação</a>
+          <a class="nav-link active" href="#">Nova Publicação</a>
         </li>
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Minha área
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Minhas publicações</a></li>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" href="#">Minha publicações</a></li>
             <li><a class="dropdown-item" href="#">Meus dados</a></li>
-            <li><a class="dropdown-item" href="#" style="color: red;">sair</a></li>
-        </ul>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" style="color: red;">Sair</a></li>
+          </ul>
         </li>
-    </ul>
-    </div>
-    <div class="">
-    <form class="form-inline my-2 my-lg-0 d-flex flex-row">
-      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar blog" aria-label="Pesquisar">
-      <button type="button" class="btn btn-primary">Pesquisar</button>
-    </form>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="pesquisar blogs" aria-label="Search">
+        <button type="button" class="btn btn-success">pesquisar</button>
+      </form>
     </div>
   </div>
 </nav>
 </header>
 <main class="overflow-auto vh-100">
   {% for blog in blogs %}
-    <div>{{ blog }}</div>
+    <div>{{ blog.title }}</div>
   {% endfor %}
 </main>
 {% endblock content%}

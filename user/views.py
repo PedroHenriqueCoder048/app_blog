@@ -2,6 +2,11 @@ from django.shortcuts import render,redirect
 from user.models import User
 
 def login(request):
+    
+    if request.method == "GET":
+        context = {'user_exist':None}
+        return render(request, 'login.html')
+
     if request.method == "POST":
         user_login =request.POST.get("user-login")
         user_psw = request.POST.get("user-psw")
@@ -11,14 +16,12 @@ def login(request):
         
         user = User.get_user(user_login,user_psw)
         print('usuario',user)
-        context = {'user_exist':False}
 
         if user:
             return redirect('home')
         else:
+            context = {'user_exist':False}
             return render(request, 'login.html',context)
-
-    return render(request, 'login.html')
 
 def recover_password(request):
     if request.method == "GET":

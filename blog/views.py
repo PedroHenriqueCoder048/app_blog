@@ -3,7 +3,7 @@ from blog.models import Blog
 
 def home(request):
     if request.method == "GET":
-        blogs = range(1000)
+        blogs = Blog.objects.all()
         print("view blog chamada")
         context = {
             'blogs':blogs

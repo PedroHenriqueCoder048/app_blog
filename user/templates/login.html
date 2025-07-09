@@ -15,12 +15,19 @@
       </form>
     </div>
   </div>
+</div>
 </nav>
-{%if not user_exist%}
-    <div class="alert alert-danger" role="alert">
-        Login não realizado. Verifique Seu usuário ou senha
-    </div>
+<div class="container m-0">
+{% if user_exist is None%}
+<div class="alert alert-primary" role="alert">
+  A simple primary alert—check it out!
+</div>
+{% elif not user_exist%}
+  <div class="alert alert-danger" role="alert">
+  Usuário ou senha incorreto , tente novamente.
+  </div>
 {% endif %}
+</div>
 </header>
 <main class="vh-100 d-flex flex-column justify-content-center  overflow-hidden">
 <div class="d-flex flex-row justify-content-center input-group input-group-sm mb-3">
@@ -41,4 +48,4 @@
     <a href="{% url 'forgotPws' %}">esqueci minha senha</a>
 </div>
 </main>
-    {% endblock content %}
+{% endblock content %}
