@@ -11,10 +11,10 @@
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
         <li class="nav-item">
-          <a class="nav-link active" onclick="atualizarConteudo()" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" onclick="partialHome()" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">Nova Publicação</a>
+          <a class="nav-link active" onclick="partialNewBlog()" href="#">Nova Publicação</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,6 +37,6 @@
 </nav>
 </header>
 <main class="overflow-auto vh-100">
-<div></div>
+<div class="container-home"></div>
 </main>
 {% endblock content%}
