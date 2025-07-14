@@ -31,7 +31,7 @@
 </header>
 <main class="vh-100 d-flex flex-column justify-content-center  overflow-hidden">
 <div class="d-flex flex-row justify-content-center input-group input-group-sm mb-3">
-    <form action="{% url 'login'%}" method="post" class="d-flex flex-column justify-content-center bg-light">
+    <form action="{% url 'login'%}" method="post" class=" form-control d-flex flex-column justify-content-center bg-light">
         {% csrf_token %}
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Usuário</label>
