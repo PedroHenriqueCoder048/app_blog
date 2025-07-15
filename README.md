@@ -1,1 +1,1 @@
-app de blog
+Essa aplicação de rede local um serviços de blogs em que os usuario podem publicar e comentar sobre diversos assuntos, atravéz desse projeto fui capaz conhecer mais profundamnte sobre html, css, js , DOM e bootstrap além de começar a salvar todas a minhas tasks e andamento do projeto no git.
