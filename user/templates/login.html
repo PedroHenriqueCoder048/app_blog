@@ -15,26 +15,43 @@
       </form>
     </div>
   </div>
-</nav>
-</header>
-<main class="vh-100 d-flex flex-column justify-content-center  overflow-hidden">
-<div class="d-flex flex-row justify-content-center input-group input-group-sm mb-3">
-    <form action="{% url 'login'%}" method="post" class="d-flex flex-column justify-content-center bg-light">
-        {% csrf_token %}
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Usuário</label>
-                <input name="user-login" class="form-control" id="" required aria-describedby="emailHelp">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Senha</label>
-                <input name="user-login" type="password" class="form-control" id="" required aria-describedby="passwordHelp">
-
-            </div>
-            <button type="submit" class="btn btn-primary">Entra</button>
-    </form>
 </div>
+</nav>
+<div class="">
+{% if user_exist is None%}
+<div class="alert alert-primary" role="alert">
+  Informe seu usuário e senha para login
+</div>
+{% elif not user_exist%}
+  <div class="alert alert-danger" role="alert">
+  Usuário ou senha incorreto , tente novamente.
+  </div>
+{% endif %}
+</div>
+</header>
+<main class="vh-100">
+  <div class="container" id="container-login">
+   <div class="row">
+    <div class="col-md-4 col-12 mx-auto">
+      <form action="{% url 'login'%}" method="post" class="form-control">
+          {% csrf_token %}
+          <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Usuário</label>
+          <input name="user-login" class="form-control" id="" required aria-describedby="emailHelp">
+          </div>
+         <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Senha</label>
+          <input name="user-psw" type="password" class="form-control" id="" required aria-describedby="passwordHelp">
+          </div>
+          <div class="d-flex flex-row justify-content-center mb-3">
+          <button type="submit" class="btn btn-primary  btn-lg">Entra</button>
+          </div>
+          </form>
+    </div>
+   </div>
+    </div>
 <div class="d-flex justify-content-center">
     <a href="{% url 'forgotPws' %}">esqueci minha senha</a>
 </div>
 </main>
-    {% endblock content %}
+{% endblock content %}

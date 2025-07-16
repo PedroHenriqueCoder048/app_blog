@@ -1,40 +1,27 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from user.models import User
-from blog.models import Blog
 
 def login(request):
-    if request.method == "GET":
-        return render(request, 'login.html')
-
-    user_input =request.POST.get("user-login")
-    # user_psw = request.POST.get("user-psw-login")
-
-    if not user_input:
-        return render(request, 'login.html')
     
-    if user_input:
-        user = User.get_user(user_input)
+    if request.method == "GET":
+        context = {'user_exist':None}
+        return render(request, 'login.html')
+
+    if request.method == "POST":
+        user_login =request.POST.get("user-login")
+        user_psw = request.POST.get("user-psw")
+
+        if not user_login or not user_psw:
+            return render(request, 'login.html')
+        
+        user = User.get_user(user_login,user_psw)
+        print('usuario',user)
 
         if user:
-            context = {
-                'encontrado':True
-            }
-            return render(request, 'home.html',context)
+            return redirect('home')
         else:
-            context = {
-                'encontrado':False
-            }
+            context = {'user_exist':False}
             return render(request, 'login.html',context)
-
-def home(request):
-
-    blogs = Blog.objects.all()
-
-    context = {
-        'blogs':blogs
-    }
-    return render(request, 'home.html',context)
-
 
 def recover_password(request):
     if request.method == "GET":
