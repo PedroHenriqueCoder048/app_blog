@@ -53,11 +53,12 @@ class User(models.Model):
     )
 
     @classmethod
-    def get_user(cls,user_login):
-        cls.objects.filter(
-                Q(email = user_login)|Q(user_name=user_login)
+    def get_user(cls,user_login,user_psw):
+        user = cls.objects.filter(
+                Q(email = user_login)|Q(user_name=user_login),
+                password=user_psw
                 ).first()
-        
+        return user
 
     def account_confirmatiom(self):
         subject = "TESTE DE CONFIRMAÇÃO DE CONTA"
