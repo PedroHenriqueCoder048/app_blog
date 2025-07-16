@@ -13,6 +13,11 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 
+
+import os
+
+load_dotenv()  # Carrega as variáveis do .env
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -52,11 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-<<<<<<< HEAD
-
-=======
     'corsheaders.middleware.CorsMiddleware',
->>>>>>> api
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -135,8 +136,6 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-load_dotenv()
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587

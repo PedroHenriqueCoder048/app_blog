@@ -1,6 +1,9 @@
 from django.shortcuts import render,redirect
 from user.models import User
 
+def home(request):
+    return render(request, 'alguma_template.html')
+
 def login(request):
     
     if request.method == "GET":

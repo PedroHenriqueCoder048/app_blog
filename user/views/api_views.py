@@ -16,3 +16,15 @@ def get_users(request):
         return Response(serializer.data)
     
     return Response(status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def get_user(request,user_name):
+
+    try:
+        User.objects.get(user_name=user_name)
+    except:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    
+    if request.method == "GET":
+        seriealizer = UserSerializer(user_name)
+        return Response(seriealizer.data)
