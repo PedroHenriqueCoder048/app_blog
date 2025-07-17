@@ -1,7 +1,7 @@
-from django.urls import path
-from user.views.render_views import login,recover_password,home
+
+from django.urls import include, path
 
 urlpatterns = [
-    path('login/',login,name='login'),
-    path('forgotPws/',recover_password,name='forgotPws'),
+    path('', include('user.urls.views_urls')),
+    path('', include('user.urls.api_urls')),
 ]
