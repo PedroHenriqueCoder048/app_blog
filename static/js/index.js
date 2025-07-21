@@ -12,12 +12,37 @@ function partialHome() {
   if (!body) return;
 
   body.innerHTML = "";
-  var div = document.createElement("div");
-  var h1 = document.createElement("h1");
-  h1.textContent = "minha home";
 
-  div.appendChild(h1);
+  (async () => {
+  const blogs = await RetornaBlogs();
+  for (const blog of blogs){
+
+  var div = document.createElement("div");
+  div.style.display = "-webkit-box";
+  div.style.webkitLineClamp = "3";
+  div.style.webkitBoxOrient = "vertical";
+  div.style.overflow = "hidden";
+  div.style.textOverflow = "ellipsis";
+  div.style.cursor ="pointer";
+  div.classList.add("border","m-2","p-1")
+
+  div.addEventListener("click",()=>{
+    console.log("clicado");
+  })
+
+  var title = document.createElement("h1");
+  var description = document.createElement("p");
+  title.textContent = blog.title;
+  description.textContent = blog.description;
+  div.appendChild(title);
+  div.appendChild(description)
   body.appendChild(div);
+
+  }
+})();
+ 
+
+  
 }
 
 function partialNewBlog() {
@@ -51,6 +76,7 @@ function partialNewBlog() {
   labelTitle.classList.add("form-label");
 
   const inputTitle = document.createElement("input");
+  inputTitle.id = "new-blog-input-title"
   inputTitle.type = "text";
   inputTitle.classList.add("form-control");
 
@@ -59,6 +85,7 @@ function partialNewBlog() {
   labelDesc.classList.add("form-label", "mt-3");
 
   const textareaDesc = document.createElement("textarea");
+  textareaDesc.id= "new-blog-input-desc"
   textareaDesc.classList.add("form-control");
   textareaDesc.rows = 5;
 
@@ -66,11 +93,13 @@ function partialNewBlog() {
   buttonGroup.classList.add("mt-3");
 
   const btnPublish = document.createElement("button");
+  btnPublish.id = "new-blog-btn-publish";
   btnPublish.textContent = "Publicar";
   btnPublish.type = "button";
   btnPublish.classList.add("btn", "btn-success","mt-2","mx-1");
 
   const btnCancel = document.createElement("button");
+  btnCancel.id = "new-blog-btn-cancel";
   btnCancel.textContent = "Cancelar";
   btnCancel.type = "button";
   btnCancel.classList.add("btn", "btn-danger","mt-2","mx-1");
@@ -92,6 +121,24 @@ function partialNewBlog() {
   body.appendChild(container);
 }
 
+$(function() {
+  $(document).on('click',"#new-blog-btn-publish",function() {
+    const inputTitle = document.getElementById("new-blog-input-title").value;
+    const inputDesc = document.getElementById("new-blog-input-desc").value;
+
+    if (!inputDesc || !inputTitle ){
+          console.log("complete o preenchimento do formulário para a publicação");
+    } else {
+          console.log(inputDesc , inputTitle);
+    }
+  });
+});
+
+$(function() {
+  $(document).on('click',"#new-blog-btn-cancel",function() {
+      console.log(inputDesc);
+  });
+});
 
 function partialMyData(){
     const body = document.querySelector("main  #main-container");
