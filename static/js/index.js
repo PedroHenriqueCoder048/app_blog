@@ -16,22 +16,19 @@ function partialHome() {
   (async () => {
   const blogs = await RetornaBlogs();
   for (const blog of blogs){
-
   var div = document.createElement("div");
+  div.id = blog.id;
   div.style.display = "-webkit-box";
-  div.style.webkitLineClamp = "3";
+  div.style.webkitLineClamp = "";
   div.style.webkitBoxOrient = "vertical";
-  div.style.overflow = "hidden";
-  div.style.textOverflow = "ellipsis";
-  div.style.cursor ="pointer";
-  div.classList.add("border","m-2","p-1")
+  div.classList.add("container-blog-pag-main","m-2","p-1")
 
   div.addEventListener("click",()=>{
     console.log("clicado");
   })
 
-  var title = document.createElement("h1");
-  var description = document.createElement("p");
+  const title = document.createElement("h1");
+  const description = document.createElement("p");
   title.textContent = blog.title;
   description.textContent = blog.description;
   div.appendChild(title);

@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from user.models import User
 
-def home(request):
-    return render(request, 'alguma_template.html')
+def create_user(request):
+    return render(request, 'create.html')
 
 def login(request):
     

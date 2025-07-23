@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{%load static%}
+
 {% block title %}
     login
 {% endblock title %}
@@ -8,10 +10,13 @@
 <header>
    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <span class="navbar-brand mb-0 h1">Ponto Comum</span>
-      <form class="d-flex">
-            <a class="nav-link" href="#" tabindex="-1" style="color: aliceblue;">Criar conta</a>
-            <a class="nav-link" href="#" tabindex="-1" style="color: aliceblue;">sobre</a>
+    <div class="d-flex flex-row justify-content-start align-items-center">
+        <span class="navbar-brand mb-0 h1 active" onclick="">Ponto Comum</span>
+      <img width="48" height="48" src="https://img.icons8.com/color/48/chat--v1.png" alt="chat--v1"/>  
+    </div> 
+    <form class="d-flex">
+            <a class="nav-link text-nav-bar" href="#" tabindex="-1" >Criar Conta</a>
+            <a class="nav-link text-nav-bar" href="#" tabindex="-1" >sobre</a>
       </form>
     </div>
   </div>

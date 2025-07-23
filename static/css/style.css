@@ -1,3 +1,35 @@
 .div-container-blog{
     max-height: 10px;
 }
+
+.text-nav-bar{
+    color: aliceblue;
+}
+
+.text-nav-bar:hover{
+    color: #FFFF;
+    text-decoration: underline;
+}
+
+
+.container-blog-pag-main{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    border: solid black 0.8px;
+    border-radius: 5px;
+    height: 300px;
+    margin: 5px;
+    padding: 3px;
+}
+
+.container-blog-pag-main h1:hover{
+    cursor: pointer;
+    text-decoration: underline 0.8px;
+    color: green;
+}
+
+.container-blog-pag-main p{
+   margin: 5px;
+   padding: 3px;
+}
